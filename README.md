@@ -1,6 +1,6 @@
 # BESS Investment Analysis — California C&I Facility
 
-A Python-based analytical toolkit for evaluating Battery Energy Storage System (BESS) economics at a high-load commercial & industrial facility in Oakland, CA, operating under PG&E's B19S rate schedule with Ava Community Energy.
+A Python-based analytical toolkit for evaluating Battery Energy Storage System (BESS) economics at a high-load commercial & industrial facility in the Bay Area, CA, operating under PG&E's B19S rate schedule with Ava Community Energy.
 
 ---
 
@@ -28,10 +28,8 @@ bess_project/
 │   └── module4_visualization.py  # 4-panel demand analysis chart
 ├── src_cn/                        # Chinese-annotated version (学习用)
 ├── data/                          # Input data files
-│   ├── pge_bill_sample.pdf        # Redacted PG&E utility bill
 │   ├── bill_daily_data.csv        # Extracted daily usage (output of M1)
 │   ├── bill_summary.csv           # Key bill figures (output of M1)
-│   ├── up00-ca-warehouse.csv      # NREL CA Climate Zone 3 warehouse data
 │   ├── nrel_warehouse_clean.csv   # Scaled & cleaned load profile (output of M2)
 │   └── bess.db                    # SQLite database (output of M3)
 ├── output/
@@ -48,7 +46,7 @@ bess_project/
 Extracts structured data from a PG&E PDF bill using `pdfplumber` and regex. Outputs daily peak/off-peak usage and key rate parameters including demand charges and blended energy rates.
 
 ### Module 2 — Load Profile Preparation (`module2_load_prep.py`)
-Loads the NREL Commercial Reference Building dataset (California Climate Zone 3, warehouse type) and scales it to match the client facility's actual peak demand of 322.9 kW. Flags PG&E peak hours (4–9 PM daily) and outputs a cleaned CSV ready for SQL analysis.
+Loads the NREL Commercial Reference Building dataset (California Climate Zone 3, warehouse type) and scales it to match the client facility's actual peak demand of ~320 kW. Flags PG&E peak hours (4–9 PM daily) and outputs a cleaned CSV ready for SQL analysis.
 
 ### Module 3 — SQL Analysis (`module3_sql.py`)
 Loads cleaned data into SQLite and runs four analytical queries:
@@ -91,7 +89,7 @@ Generates a 4-panel matplotlib chart:
 
 ## Data Sources
 
-- **PG&E bill data**: Real utility bill (account details redacted), billing period Oct 29 – Nov 30, 2025
+- **PG&E bill data**: Real utility bill (all identifying information redacted), Bay Area industrial warehouse facility
 - **NREL load profile**: [Commercial Reference Buildings](https://openei.org/wiki/Commercial_Reference_Buildings) — California Climate Zone 3, warehouse, 8,760-hour annual dataset
 
 ---
@@ -100,7 +98,7 @@ Generates a 4-panel matplotlib chart:
 
 ```
 Python 3.14    pdfplumber    pandas    sqlite3
-matplotlib     numpy         re        pathlib
+matplotlib     numpy         re
 ```
 
 ---
