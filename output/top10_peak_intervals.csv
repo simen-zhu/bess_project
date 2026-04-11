@@ -1,0 +1,11 @@
+Timestamp,Month,Hour,Demand_kW,Day_Type,Period
+2018-02-24 09:15:00,2,9,322.9,Weekend,Off-Peak
+2018-02-24 09:00:00,2,9,316.7,Weekend,Off-Peak
+2018-02-24 09:30:00,2,9,314.4,Weekend,Off-Peak
+2018-02-24 08:45:00,2,8,310.1,Weekend,Off-Peak
+2018-02-24 08:30:00,2,8,304.9,Weekend,Off-Peak
+2018-02-24 08:15:00,2,8,300.3,Weekend,Off-Peak
+2018-02-24 08:00:00,2,8,296.9,Weekend,Off-Peak
+2018-02-24 07:45:00,2,7,293.1,Weekend,Off-Peak
+2018-02-23 07:00:00,2,7,292.1,Weekday,Off-Peak
+2018-02-23 09:30:00,2,9,291.2,Weekday,Off-Peak

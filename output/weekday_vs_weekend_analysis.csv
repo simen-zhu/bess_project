@@ -1,0 +1,5 @@
+Day_Type,Period,Avg_Demand_kW,Max_Demand_kW,Min_Demand_kW,Data_Points
+Weekday,Peak,74.3,164.0,45.3,5220
+Weekday,Off-Peak,92.9,292.1,37.6,19836
+Weekend,Peak,58.4,149.6,46.6,2080
+Weekend,Off-Peak,85.2,322.9,36.4,7904
