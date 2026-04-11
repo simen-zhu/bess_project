@@ -21,26 +21,35 @@ California C&I electricity bills can exceed **$50,000/month**, with demand charg
 
 ```
 bess_project/
-├── src_en/                        # English source code (this version)
-│   ├── module1_extract_bill.py    # PDF bill parsing & data extraction
-│   ├── module2_load_prep.py       # NREL load profile scaling & cleaning
-│   ├── module3_sql.py             # SQLite database queries & analysis
-│   └── module4_visualization.py  # 4-panel demand analysis chart
-├── src_cn/                        # Chinese-annotated version (学习用)
-├── data/                          # Input data files
-│   ├── bill_daily_data.csv        # Extracted daily usage (output of M1)
-│   ├── bill_summary.csv           # Key bill figures (output of M1)
-│   ├── nrel_warehouse_clean.csv   # Scaled & cleaned load profile (output of M2)
-│   └── bess.db                    # SQLite database (output of M3)
+├── src_en/                           # English source code
+│   ├── module1_extract_bill.py       # PDF bill parsing & data extraction
+│   ├── module2_load_prep.py          # NREL load profile scaling & cleaning
+│   ├── module3_sql.py                # SQLite database queries & analysis
+│   ├── module4_visualization.py      # 4-panel demand analysis chart
+│   ├── module5_export_csv.py         # Export SQL results to CSV
+│   ├── module6_roi_chart.py          # ROI summary visualization
+│   └── module7_sql_summary.py        # SQL results summary chart
+├── src_cn/                           # Chinese-annotated version (学习用)
+├── data/                             # Input & processed data files
+│   ├── bill_daily_data.csv           # Extracted daily usage (output of M1)
+│   ├── bill_summary.csv              # Key bill figures (output of M1)
+│   ├── nrel_warehouse_clean.csv      # Scaled & cleaned load profile (output of M2)
+│   └── bess.db                       # SQLite database (output of M3)
 ├── output/
-│   └── chart_final_4in1.png       # 4-panel visualization output
+│   ├── chart_final_4in1.png          # 4-panel demand analysis (output of M4)
+│   ├── monthly_demand_analysis.csv   # Monthly demand charges (output of M5)
+│   ├── top10_peak_intervals.csv      # Top 10 peak intervals (output of M5)
+│   ├── weekday_vs_weekend_analysis.csv # Weekday/weekend breakdown (output of M5)
+│   ├── battery_savings_comparison.csv  # Battery size savings (output of M5)
+│   ├── roi_summary_chart.png         # ROI summary chart (output of M6)
+│   └── sql_results_summary.png       # SQL results visualization (output of M7)
 ├── README.md
 └── README_CN.md
 ```
 
 ---
 
-## Four-Module Pipeline
+## Seven-Module Pipeline
 
 ### Module 1 — Bill Parsing (`module1_extract_bill.py`)
 Extracts structured data from a PG&E PDF bill using `pdfplumber` and regex. Outputs daily peak/off-peak usage and key rate parameters including demand charges and blended energy rates.
@@ -61,6 +70,25 @@ Generates a 4-panel matplotlib chart:
 2. Monthly peak demand with battery reduction target lines
 3. Annual savings comparison across battery sizes
 4. Marginal return analysis (diminishing returns curve)
+
+### Module 5 — Export Results (`module5_export_csv.py`)
+Exports all four SQL query results to CSV files in the output/ folder for further analysis and sharing.
+
+### Module 6 — ROI Summary Chart (`module6_roi_chart.py`)
+Generates a single-page investment summary visualization showing 10-year cash flow projection, monthly revenue breakdown by source, and incentive stack (SGIP + ITC).
+
+### Module 7 — SQL Results Summary (`module7_sql_summary.py`)
+Generates a 4-panel chart directly from the CSV outputs, combining tables and bar charts to present SQL query findings in a shareable visual format.
+
+---
+
+## Sample Outputs
+
+### Demand Analysis (Module 4)
+![4-panel demand analysis](output/chart_final_4in1.png)
+
+### SQL Results Summary (Module 7)
+![SQL results summary](output/sql_results_summary.png)
 
 ---
 
@@ -115,6 +143,9 @@ python module1_extract_bill.py   # outputs to ../data/
 python module2_load_prep.py      # outputs to ../data/
 python module3_sql.py            # outputs to ../data/bess.db
 python module4_visualization.py  # outputs to ../output/
+python module5_export_csv.py     # outputs to ../output/
+python module6_roi_chart.py      # outputs to ../output/
+python module7_sql_summary.py    # outputs to ../output/
 ```
 
 ---
