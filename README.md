@@ -120,6 +120,8 @@ Generates a 4-panel chart directly from the CSV outputs, combining tables and ba
 - **PG&E bill data**: Real utility bill (all identifying information redacted), Bay Area industrial warehouse facility
 - **NREL load profile**: [Commercial Reference Buildings](https://openei.org/wiki/Commercial_Reference_Buildings) — California Climate Zone 3, warehouse, 8,760-hour annual dataset
 
+> **Note:** `up00-ca-warehouse.csv` is not included in this repo due to file size. Download directly from [OpenEI Commercial Reference Buildings](https://openei.org/wiki/Commercial_Reference_Buildings), select California Climate Zone 3, warehouse type. Place the file in the `data/` folder before running Module 2.
+
 ---
 
 ## Tech Stack
