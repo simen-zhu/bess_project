@@ -36,7 +36,7 @@ print(f"  周末峰时均值:    {df[df['is_peak'] & ~df['is_weekday']]['kw'].me
 print("\n=== 按月最大需量 ===")
 monthly_max = df.groupby('month')['kw'].max()
 for month, kw in monthly_max.items():
-    fee = kw * 39.22
+    fee = kw * 37.37
     bar = '█' * int(kw / 10)
     print(f"  {month:2d}月: {kw:6.1f} kW  需量电费${fee:>8,.0f}/月  {bar}")
 

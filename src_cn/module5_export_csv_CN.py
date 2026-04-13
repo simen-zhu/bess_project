@@ -20,7 +20,7 @@ q1 = """
 SELECT
     month                           AS 月份,
     ROUND(MAX(kw), 1)              AS 最高需量kW,
-    ROUND(MAX(kw) * 39.22, 0)     AS 需量电费USD,
+    ROUND(MAX(kw) * 37.37, 0)     AS 需量电费USD,
     ROUND(MAX(kw) * 6.40, 0)      AS 峰时需量电费USD
 FROM load_profile
 GROUP BY month
@@ -84,7 +84,7 @@ GROUP BY month
 ORDER BY month
 """
 df4 = pd.read_sql(q4, conn)
-NC_RATE = 39.22
+NC_RATE = 37.37
 df4['55kW节省USD']  = (df4['原始需量kW'] - df4['装55kW后kW'])  * NC_RATE
 df4['80kW节省USD']  = (df4['原始需量kW'] - df4['装80kW后kW'])  * NC_RATE
 df4['100kW节省USD'] = (df4['原始需量kW'] - df4['装100kW后kW']) * NC_RATE
@@ -93,7 +93,7 @@ df4.to_csv(f'{output_dir}/battery_savings_comparison.csv', index=False)
 print(f"\n✅ 已保存：battery_savings_comparison.csv")
 
 orig = df4['原始需量kW'].sum()
-print(f"\n年度需量节省对比（$39.22/kW × 12月）：")
+print(f"\n年度需量节省对比（$37.37/kW × 12月）：")
 print(f"  装55kW电池:  节省 ${(orig-df4['装55kW后kW'].sum())*NC_RATE:>8,.0f}/年")
 print(f"  装80kW电池:  节省 ${(orig-df4['装80kW后kW'].sum())*NC_RATE:>8,.0f}/年  ← 最优")
 print(f"  装100kW电池: 节省 ${(orig-df4['装100kW后kW'].sum())*NC_RATE:>8,.0f}/年")

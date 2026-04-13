@@ -96,7 +96,7 @@ ax1.grid(axis='y', alpha=0.3, zorder=1)
 
 ax2 = fig.add_axes([0.54, 0.08, 0.42, 0.58])
 ax2.set_facecolor('#f8f9fa')
-dc_monthly  = 55 * (39.22 + 6.40)
+dc_monthly  = 55 * (37.37 + 6.40)
 arb_monthly = 300 * 0.92 * 0.1155
 dr_monthly  = (150/1000) * 60000 / 12
 total_monthly = dc_monthly + arb_monthly + dr_monthly

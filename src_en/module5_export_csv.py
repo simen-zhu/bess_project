@@ -12,7 +12,7 @@ print("✅ Connected to bess.db")
 
 q1 = """
 SELECT month AS Month, ROUND(MAX(kw),1) AS Peak_Demand_kW,
-       ROUND(MAX(kw)*39.22,0) AS Demand_Charge_USD,
+       ROUND(MAX(kw)*37.37,0) AS Demand_Charge_USD,
        ROUND(MAX(kw)*6.40,0) AS Peak_Demand_Charge_USD
 FROM load_profile GROUP BY month ORDER BY month
 """
@@ -54,7 +54,7 @@ SELECT month AS Month, ROUND(MAX(kw),1) AS Original_kW,
 FROM load_profile WHERE is_peak=1 GROUP BY month ORDER BY month
 """
 df4 = pd.read_sql(q4, conn)
-NC_RATE = 39.22
+NC_RATE = 37.37
 df4['Savings_55kW_USD']  = (df4['Original_kW'] - df4['After_55kW'])  * NC_RATE
 df4['Savings_80kW_USD']  = (df4['Original_kW'] - df4['After_80kW'])  * NC_RATE
 df4['Savings_100kW_USD'] = (df4['Original_kW'] - df4['After_100kW']) * NC_RATE

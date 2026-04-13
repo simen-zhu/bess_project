@@ -96,7 +96,7 @@ Generates a 4-panel chart directly from the CSV outputs, combining tables and ba
 
 | Component | Rate |
 |---|---|
-| Non-coincident demand charge | $39.22 / kW·month |
+| Non-coincident demand charge | $37.37 / kW·month |
 | Peak demand charge (PG&E + Ava) | $3.20 + $3.20 = $6.40 / kW·month |
 | Blended peak energy rate | ¢34.36 / kWh |
 | Blended off-peak energy rate | ¢22.81 / kWh |

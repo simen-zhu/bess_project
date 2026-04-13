@@ -36,7 +36,7 @@ print(f"  Weekend peak avg:           {df[df['is_peak'] & ~df['is_weekday']]['kw
 print("\n=== Monthly Max Demand ===")
 monthly_max = df.groupby('month')['kw'].max()
 for month, kw in monthly_max.items():
-    fee = kw * 39.22
+    fee = kw * 37.37
     bar = '█' * int(kw / 10)
     print(f"  Month {month:2d}: {kw:6.1f} kW  Demand charge ${fee:>8,.0f}/mo  {bar}")
 

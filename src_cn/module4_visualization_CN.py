@@ -14,7 +14,7 @@ peak_df['month'] = peak_df['timestamp'].dt.month
 monthly_peak = peak_df.groupby('month')['kw'].max()
 
 battery_sizes = [55, 80, 100, 150]
-NC_RATE = 39.22
+NC_RATE = 37.37
 months_list = range(1, 13)
 month_labels = ['1月','2月','3月','4月','5月','6月',
                 '7月','8月','9月','10月','11月','12月']

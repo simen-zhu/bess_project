@@ -17,7 +17,7 @@ print("Query 1: Monthly Peak Demand → Monthly Demand Charges")
 print("="*55)
 q1 = """
 SELECT month AS Month, ROUND(MAX(kw),1) AS Peak_Demand_kW,
-       ROUND(MAX(kw)*39.22,0) AS Demand_Charge_USD
+       ROUND(MAX(kw)*37.37,0) AS Demand_Charge_USD
 FROM load_profile GROUP BY month ORDER BY month
 """
 df1 = pd.read_sql(q1, conn)
@@ -59,12 +59,12 @@ FROM load_profile WHERE is_peak=1 GROUP BY month ORDER BY month
 df4 = pd.read_sql(q4, conn)
 print(df4.to_string(index=False))
 
-NC_RATE = 39.22
+NC_RATE = 37.37
 orig = df4['Original_kW'].sum()
 s55  = df4['After_55kW'].sum()
 s80  = df4['After_80kW'].sum()
 s100 = df4['After_100kW'].sum()
-print(f"\nAnnual demand savings ($39.22/kW × 12 months):")
+print(f"\nAnnual demand savings ($37.37/kW × 12 months):")
 print(f"  55 kW battery:  saves ${(orig-s55)*NC_RATE:>8,.0f}/yr")
 print(f"  80 kW battery:  saves ${(orig-s80)*NC_RATE:>8,.0f}/yr  ← Optimal")
 print(f"  100 kW battery: saves ${(orig-s100)*NC_RATE:>8,.0f}/yr")
